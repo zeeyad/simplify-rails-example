@@ -1,20 +1,82 @@
-<div id="card-form">
-  <%= form_tag({controller: 'payment', action: 'pay'}, method: :post, id: 'simplify-payment-form') do %>
-    <div>
-      <%= label_tag('cc-number', ' Credit Card Number:') %>
-      <%= text_field_tag('cc-number', nil, maxlength: 20, autocomplete: 'off', autofocus: true, value: '5555555555554444') %>
-    </div>
-    <div>
-      <%= label_tag('cc-cvc', 'CVC:') %>
-      <%= text_field_tag('cc-cvc', nil, maxlength: 4, autocomplete: 'off', value: '123') %>
-    </div>
-    <div>
-      <%= label_tag('cc-exp-month', 'Expiry Date:') %>
-      <%= select_month(Date.new(Date.today.year, 1).beginning_of_month, {use_two_digit_numbers: true}, {id: 'cc-exp-month'}) %>
-      <%= select_year(Date.today+5, {start_year: Date.today.year, end_year: Date.today.year+10}, {id: 'cc-exp-year'}) %>
-    </div>
-    <div id="submit-box">
-      <%= submit_tag('Process Payment', id: 'process-payment-btn') %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="row">
+  <!-- You can make it whatever width you want. I'm making it full width
+  on <= small devices and 4/12 page width on >= medium devices -->
+    <div class="col-xs-12 col-md-4 col-sm-offset-4">
+
+    <!-- CREDIT CARD FORM STARTS HERE -->
+    <%= form_tag({controller: 'payment', action: 'pay'}, method: :post, id: 'simplify-payment-form') do %>
+
+      <div class="panel panel-default credit-card-box">
+        <div class="panel-heading display-table" style="background-color:#fff" >
+          <div class="row display-tr" >
+            <div class="display-td" >                            
+              <img class="img-responsive pull-left" alt="Icon" src="/assets/BIBD-white.jpg" width="110" />
+              <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+            </div>
+          </div>                    
+        </div>
+        <div class="panel-body">
+        <form role="form" id="payment-form">
+        
+        <!-- CARD NUMBER -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= label_tag('cc-number', ' Credit Card Number:', placeholder: "Valid Card Number" ) %>
+              <div class="input-group">
+                <%= text_field_tag('cc-number', nil, maxlength: 20, autocomplete: 'off', autofocus: true, value: '5555555555554444', class: 'form-control') %>
+                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+              </div>
+            </div>                            
+          </div>
+        </div>
+
+        <!-- CARD EXPIRATON -->
+        <div class="row">
+          <div class="col-xs-8 col-md-8">
+            <div class="form-group">
+              <label for="cardExpiry"><span><%= label_tag('cc-exp-month', 'Expiry Date:') %></span></label>
+              <div class="row">
+                <div class="col-xs-5">
+                  <%= select_month(Date.new(Date.today.year, 1).beginning_of_month, {use_two_digit_numbers: true}, {id: 'cc-exp-month', class: 'form-control'}) %>
+                </div>
+                <div class="col-xs-6" style="margin-left: -15px;">
+                  <%= select_year(Date.today+5, {start_year: Date.today.year, end_year: Date.today.year+10}, {id: 'cc-exp-year', class: 'form-control'}) %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CVC -->
+          <div class="col-xs-4 col-md-4 pull-right">
+            <div class="form-group">
+            <label for="cardCVC"><%= label_tag('cc-cvc', 'CVC:') %></label>
+            <%= text_field_tag('cc-cvc', nil, maxlength: 4, autocomplete: 'off', value: '123', class: 'form-control') %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= submit_tag('Process Payment', id: 'process-payment-btn', class: 'btn btn-success btn-lg btn-block') %>
+          </div>
+        </div>
+        <div class="row" style="display:none;">
+          <div class="col-xs-12">
+            <p class="payment-errors"></p>
+          </div>
+        </div>
+        </form>
+        </div>
+      </div>
+    <% end %>
+            
+    <!-- CREDIT CARD FORM ENDS HERE -->
+    </div>            
+  </div>
 </div>
+
+  <!-- If you're using Stripe for payments -->
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  
+</body>
