@@ -1,7 +1,7 @@
 <div id="card-form">
   <%= form_tag({controller: 'payment', action: 'pay'}, method: :post, id: 'simplify-payment-form') do %>
     <div>
-      <%= label_tag('cc-number', 'Credit Card Number:') %>
+      <%= label_tag('cc-number', ' Credit Card Number:') %>
       <%= text_field_tag('cc-number', nil, maxlength: 20, autocomplete: 'off', autofocus: true, value: '5555555555554444') %>
     </div>
     <div>

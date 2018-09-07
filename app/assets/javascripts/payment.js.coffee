@@ -23,7 +23,7 @@ ready = ->
     $('#simplify-payment-form').on 'submit', ->
         $('#process-payment-btn').attr disabled: 'disabled'
         SimplifyCommerce.generateToken {
-            key: 'sbpb_MTE5YzY5MzUtYjRjYS00MDJjLTk3NzAtNjI0ZjVkM2FhZGI4',
+            key: 'sbpb_NmUxNTA4NjUtZTIwZi00YWVjLWI0NzUtMjNmM2JkMmMyZTI0',
             card: {
                 number: $('#cc-number').val(),
                 cvc: $('#cc-cvc').val(),

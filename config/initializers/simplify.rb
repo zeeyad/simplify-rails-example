@@ -1,2 +1,2 @@
-Simplify::public_key = ENV['simplify_public_key']
-Simplify::private_key = ENV['simplify_private_key']
+Simplify::public_key = 'sbpb_NmUxNTA4NjUtZTIwZi00YWVjLWI0NzUtMjNmM2JkMmMyZTI0'
+Simplify::private_key = 'Vbj9OWVOK0IfIjW+LkROm4A7VEETX68rYq9frNiDzGt5YFFQL0ODSXAOkNtXTToq'
